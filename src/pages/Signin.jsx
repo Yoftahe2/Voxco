@@ -1,0 +1,74 @@
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
+function Signin({setIsAdmin}) {
+
+    const navigate = useNavigate()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+
+  const handleClick = () =>  {
+    if (!email.trim() || !password.trim()) {
+            setError('Please fill in all fields.')
+            return
+        }
+        setError('')
+    navigate('/orders')
+  }
+
+  const handleInputChange = () => {
+        if (error) {
+            setError('')
+        }
+    }
+
+    useEffect(()=>{
+        setIsAdmin(true)
+    },[setIsAdmin])
+  return (
+    <div className='flex flex-col items-center gap-5 justify-center w-[30%] rounded-3xl shadow-sm  shadow-gray-500 m-auto mt-[2%] bg-white py-10 px-5'>
+        <div>
+            <img src='/logo.png' className='bg-[#215F9A] px-4 py-2 rounded-2xl' alt='logo'/>
+        </div>
+        
+        <div className='flex flex-col items-center gap-5'>
+            <div>
+            <p className='text-xl font-semibold'>Voxco Number Ordering Portal</p>
+            <p>Sign in to continue</p>
+            </div>
+
+            <div className='flex flex-col gap-5 w-full'>
+                <input className='py-2 border-2 border-gray-500 rounded-md px-5' 
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email" 
+                value={email}
+                onChange={(e)=>{
+                    setEmail(e.target.value)
+                    handleInputChange()
+                }}
+                required />
+                <input className='py-2 px-5 border-2 border-gray-500 rounded-md' 
+                type="password"
+                 placeholder="Password"
+                 value={password}
+                 onChange={(e)=>{
+                    setPassword(e.target.value)
+                    handleInputChange()
+                 }}
+                  required />
+            </div>
+            {error && (
+                    <p className='text-red-500 text-sm w-full -mt-4'>{error}</p>
+                )}
+            <button onClick={handleClick} className='bg-[#215F9A] hover:bg-[#2c78c0] text-white text-2xl rounded-2xl py-4 w-full cursor-pointer'>Sign In</button>
+            <p>Don't have an account? <span className='text-indigo-900 cursor-pointer' onClick={()=>navigate('/sign-up')}>Please get start</span></p>
+        </div>
+    </div>
+  )
+}
+
+export default Signin
