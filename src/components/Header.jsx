@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { House, UserRound } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from './AuthContext';
 
 function Header() {
-   //    { username }
+   const { logout, user } = useAuth();
    
 const navigate = useNavigate()
 const [isOpen, setIsOpen] = useState(false);
@@ -93,12 +94,16 @@ const handleMouseLeaveProfile = () => setIsProfileDropdownOpen(false);
     }
 
 
-const handleLogout = () => {
-        // Handle logout logic, e.g., clear auth state, localStorage, then navigate to signin
-        localStorage.removeItem('token'); // Example: clear token
-        navigate('/sign-in');
-        setIsDropdownOpen(false);
-    };
+// const handleLogout = () => {
+//         // Handle logout logic, e.g., clear auth state, localStorage, then navigate to signin
+//         localStorage.removeItem('token'); // Example: clear token
+//         navigate('/sign-in');
+//         setIsDropdownOpen(false);
+//     };
+    const handleLogout = () => {
+    logout();
+    navigate('/sign-in');
+  };
 
   return (
 
@@ -233,7 +238,7 @@ const handleLogout = () => {
                 </button>
 
                 {/* Welcome Greeting */}
-                <span className="text-lg font-medium">Welcome, John Doe</span>
+                <span className="text-lg font-medium">Welcome, {user?.email}</span>
             </nav>
 
             {/* Profile Icon Dropdown */}
@@ -254,7 +259,7 @@ const handleLogout = () => {
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                     </svg>
-                    <span className="hidden md:inline text-xl">John</span>
+                    <span className="hidden md:inline text-xl">{user?.name}</span>
                 </button>
                 {isProfileDropdownOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">

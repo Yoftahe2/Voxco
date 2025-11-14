@@ -1,13 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import {useAuth} from '../components/AuthContext'
 
 function OrdersPage() {
+
+// const { logout } = useAuth;
+ const { logout, user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/signin');
+  };
+
     return (
         <main className="bg-gray-50 min-h-screen py-12 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Hero Section */}
                 <section className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-[#215F9A] mb-4">Choose a Product Below</h2> {/* Bigger text */}
-                    <p className="text-xl text-gray-600">Welcome, John Doe</p>
+                    <p className="text-xl text-gray-600">Welcome, {user?.name}</p>
                 </section>
 
                 {/* Product Cards Grid */}

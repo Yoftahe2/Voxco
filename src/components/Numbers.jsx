@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Countries } from '../data/counrty'
 
 function Numbers() {
  
@@ -9,7 +10,7 @@ function Numbers() {
     <main className="bg-gray-50 min-h-screen py-12 px-8">
             <div className="max-w-4xl mx-auto text-center mt-20">
                 <h1 className="text-4xl font-bold text-[#215F9A] mb-8">Number Search & Ordering</h1>
-                <p className="text-xl text-gray-600">Search for available numbers here. (Implement search logic later)</p>
+                <p className="text-xl text-gray-600">Search for available numbers here.</p>
                 {/* Add search form, etc. */}
             </div>
               {/* Order Form Section - Beautiful Table-like Layout */}
@@ -29,9 +30,13 @@ function Numbers() {
                                 <tr>
                                     <td className="p-4">
                                         <select className="w-full p-2 border border-[#215F9A] rounded-lg">
-                                            <option>United States</option>
-                                            <option>Canada</option>
-                                            {/* Add more countries */}
+                                            <div className=''>
+                                        {Countries.map((country, index)=>(
+                                            <div key={index} className=''>
+                                            <option className='hover:bg-blue-600 cursor-pointer hover:text-white' value={country.country_name}>{country.country_name}</option>
+                                            </div>
+                                            ))}
+                                            </div>
                                         </select>
                                     </td>
                                     <td className="p-4">
@@ -58,31 +63,35 @@ function Numbers() {
                     <div className="grid md:grid-cols-4 gap-4 mt-6 text-center">
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <label className="block text-sm font-medium text-gray-700 mb-1">Number Type</label>
-                            <input type="text" className="w-full p-2 border border-[#215F9A] rounded" />
+                            {/* <input type="text" className="w-full p-2 border border-[#215F9A] rounded" /> */}
                         </div>
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <label className="block text-sm font-medium text-gray-700 mb-1">MRC</label>
-                            <input type="text" className="w-full p-2 border border-[#215F9A] rounded" />
+                            {/* <input type="text" className="w-full p-2 border border-[#215F9A] rounded" /> */}
                         </div>
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <label className="block text-sm font-medium text-gray-700 mb-1">NRC</label>
-                            <input type="text" className="w-full p-2 border border-[#215F9A] rounded" />
+                            {/* <input type="text" className="w-full p-2 border border-[#215F9A] rounded" /> */}
                         </div>
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <label className="block text-sm font-medium text-gray-700 mb-1">Other Charge</label>
-                            <input type="text" className="w-full p-2 border border-[#215F9A] rounded" />
+                            {/* <input type="text" className="w-full p-2 border border-[#215F9A] rounded" /> */}
                         </div>
                     </div>
                     <div className="grid md:grid-cols-3 gap-4 mt-6">
-                        <div>
+                        <div className='bg-gray-50 rounded-lg p-4 text-center'>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Requirements</label>
-                            <textarea className="w-full p-2 border border-[#215F9A] rounded" rows={3} />
+                            {/* <textarea className="w-full p-2 border border-[#215F9A] rounded" rows={3} /> */}
                         </div>
-                        <div>
+                        <div className='bg-gray-50 rounded-lg p-4 text-center'>
                             <label className="block text-sm font-medium text-gray-700 mb-1">MOQ</label>
-                            <input type="number" className="w-full p-2 border border-[#215F9A] rounded" />
+                            {/* <input type="number" className="w-full p-2 border border-[#215F9A] rounded" /> */}
                         </div>
-                        <div>
+                        <div className='bg-gray-50 rounded-lg p-4 text-center'>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Features</label>
+                            {/* <input type="number" className="w-full p-2 border border-[#215F9A] rounded" /> */}
+                        </div>
+                        <div className='bg-gray-50 rounded-lg p-4'>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Currency</label>
                             <select className="w-full p-2 border border-[#215F9A] rounded">
                                 <option>USD</option>
