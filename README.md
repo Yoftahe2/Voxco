@@ -1,16 +1,106 @@
-# React + Vite
+# Voxco Number Ordering Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Next.js application for ordering phone numbers and managing communications services for Voxco Communications.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework**: Next.js 15
+- **Authentication**: Supabase Auth
+- **Database**: Supabase (PostgreSQL)
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 18+ installed
+- A Supabase project (get one at [supabase.com](https://supabase.com))
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Set up environment variables:
+   - Copy `env.example` to `.env.local`
+   - Fill in your Supabase credentials:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+3. Run the development server:
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+src/
+├── app/              # Next.js App Router pages
+│   ├── layout.js     # Root layout with AuthProvider
+│   ├── page.js       # Home page (orders)
+│   ├── sign-in/      # Sign in page
+│   ├── sign-up/      # Sign up page
+│   ├── numbers/      # Numbers ordering page
+│   └── orders/       # Orders page
+├── components/       # React components
+│   ├── AuthContext.jsx  # Supabase auth context
+│   ├── Header.jsx       # Navigation header
+│   ├── Sidebar.jsx      # Side navigation
+│   ├── Signin.jsx       # Sign in component
+│   ├── Signup.jsx       # Sign up component
+│   ├── OrdersPage.jsx   # Orders page component
+│   └── Numbers.jsx     # Numbers ordering component
+├── lib/
+│   └── supabase/     # Supabase client utilities
+│       ├── client.js    # Browser client
+│       ├── server.js    # Server client
+│       └── middleware.js # Auth middleware
+└── data/
+    └── counrty.js    # Country data
+```
+
+## Features
+
+- ✅ User authentication with Supabase
+- ✅ Protected routes
+- ✅ Number ordering interface
+- ✅ Product selection (Port IN, Port OUT, SIPTRUNK)
+- ✅ Responsive design
+
+## Supabase Setup
+
+1. Create a new project at [supabase.com](https://supabase.com)
+2. Go to Settings > API
+3. Copy your Project URL and anon/public key
+4. Add them to `.env.local`
+
+### Database Schema
+
+The application uses Supabase Auth for user management. Additional tables can be created as needed for:
+- Orders
+- Number inventory
+- Porting requests
+- etc.
+
+## Development
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Migration from React/Vite
+
+This project was migrated from a React + Vite setup to Next.js with Supabase authentication. Key changes:
+- Replaced React Router with Next.js App Router
+- Replaced LocalStorage auth with Supabase Auth
+- Added server-side authentication checks
+- Updated all navigation to use Next.js routing
