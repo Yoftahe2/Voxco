@@ -103,7 +103,7 @@ export default function Signin() {
           {loading ? 'Signing in...' : 'Sign In'}
         </button>
         <p>
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <span
             className="text-indigo-900 cursor-pointer"
             onClick={() => router.push('/sign-up')}
