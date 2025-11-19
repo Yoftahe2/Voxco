@@ -5,8 +5,9 @@ export async function middleware(request: NextRequest) {
   try {
     return await updateSession(request)
   } catch (error) {
-    // Fallback error handling
+    // Fallback error handling - log and allow request to proceed
     console.error('Middleware execution error:', error)
+    // Return a response to prevent the middleware from crashing
     return NextResponse.next({ request })
   }
 }
