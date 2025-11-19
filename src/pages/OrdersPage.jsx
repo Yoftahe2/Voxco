@@ -32,7 +32,7 @@ function OrdersPage() {
                             <p className="text-gray-600 mb-4">Seamlessly transfer numbers into our network.</p>
                             <button 
                                 onClick={() => alert('Port-in functionality coming soon!')}
-                                className="w-full bg-[#215F9A] text-white py-3 rounded-lg hover:bg-[#2c78c0] transition-colors text-lg"
+                                className="w-full bg-[#215F9A] text-white py-3 rounded-lg hover:bg-[#2c78c0] transition-colors text-lg cursor-pointer"
                             >
                                 Learn More
                             </button>
@@ -47,7 +47,7 @@ function OrdersPage() {
                             <p className="text-gray-600 mb-4">Effortlessly move numbers to another provider.</p>
                             <button 
                                 onClick={() => alert('Port-out functionality coming soon!')}
-                                className="w-full bg-[#215F9A] text-white py-3 rounded-lg hover:bg-[#2c78c0] transition-colors text-lg"
+                                className="w-full bg-[#215F9A] text-white py-3 rounded-lg hover:bg-[#2c78c0] transition-colors text-lg cursor-pointer"
                             >
                                 Learn More
                             </button>
@@ -62,7 +62,7 @@ function OrdersPage() {
                             <p className="text-gray-600 mb-4">Reliable SIP trunking for voice services.</p>
                             <button 
                                 onClick={() => alert('SIPTRUNK functionality coming soon!')}
-                                className="w-full bg-[#215F9A] text-white py-3 rounded-lg hover:bg-[#2c78c0] transition-colors text-lg"
+                                className="w-full bg-[#215F9A] text-white py-3 rounded-lg hover:bg-[#2c78c0] transition-colors text-lg cursor-pointer"
                             >
                                 Learn More
                             </button>
